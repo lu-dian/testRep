@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 命名空间：为了区分XML文件写的标记符 -->
+<mapper namespace="cn.hy.cloud_note.dao.UserDao">
+	<!-- 按照姓名查询 -->
+	<select id="findByName" parameterType="string" resultType="cn.hy.cloud_note.entity.User">
+		select * from cn_user
+		where cn_user_name = #{name}
+	</select>
+	<!-- 添加用户信息 -->
+	<insert id="saveUser" parameterType="cn.hy.cloud_note.entity.User">
+		insert into cn_user (cn_user_id,cn_user_name,cn_user_password,cn_user_token,cn_user_desc)
+		values(#{cn_user_id},#{cn_user_name},#{cn_user_password},#{cn_user_token},#{cn_user_desc});
+	</insert>
+</mapper>
